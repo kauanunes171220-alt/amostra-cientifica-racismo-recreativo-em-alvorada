@@ -6,97 +6,100 @@
   <title>Canal de Relatos e Conscientização</title>
   <style>
     :root {
-      --bg-color: #FAFAFA;
+      --bg-color: #F8FAFC;
       --card-bg: #FFFFFF;
-      --text-main: #1F2937;
-      --text-muted: #4B5563;
+      --text-main: #0F172A;
+      --text-muted: #64748B;
       --accent-color: #4F46E5;
       --accent-hover: #4338CA;
-      --border-color: #E5E7EB;
+      --border-color: #E2E8F0;
+      --border-focus: #818CF8;
+      --success-color: #10B981;
     }
 
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     }
 
     body {
       background-color: var(--bg-color);
       color: var(--text-main);
       line-height: 1.6;
-      padding: 2rem 1rem;
+      padding: 3rem 1rem;
     }
 
     .container {
-      max-width: 680px;
+      max-width: 640px;
       margin: 0 auto;
     }
 
     header {
       text-align: center;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
     }
 
     header h1 {
-      font-size: 1.8rem;
+      font-size: 2rem;
+      font-weight: 800;
       color: var(--text-main);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.025em;
     }
 
     header p {
       color: var(--text-muted);
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
 
     .form-card {
       background-color: var(--card-bg);
-      padding: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      padding: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.04), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
       border: 1px solid var(--border-color);
     }
 
     .form-group {
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.75rem;
     }
 
     label {
       display: block;
       font-weight: 600;
-      margin-bottom: 0.4rem;
+      margin-bottom: 0.5rem;
       font-size: 0.95rem;
+      color: var(--text-main);
     }
 
     .help-text {
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.75rem;
       display: block;
     }
 
     input[type="text"],
-    input[type="email"],
     select,
     textarea {
       width: 100%;
-      padding: 0.75rem;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
+      padding: 0.85rem 1rem;
+      border: 1.5px solid var(--border-color);
+      border-radius: 10px;
       font-size: 0.95rem;
       background-color: #FFFFFF;
       color: var(--text-main);
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      transition: all 0.2s ease;
     }
 
     input[type="text"]:focus,
-    input[type="email"]:focus,
     select:focus,
     textarea:focus {
       outline: none;
       border-color: var(--accent-color);
-      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+      box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.12);
     }
 
     textarea {
@@ -105,18 +108,27 @@
     }
 
     .options-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
     }
 
     .option-item {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
-      font-weight: normal;
-      font-size: 0.95rem;
+      gap: 0.75rem;
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      font-weight: 500;
+      font-size: 0.925rem;
       cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .option-item:hover {
+      background-color: #F8FAFC;
+      border-color: #CBD5E1;
     }
 
     .option-item input[type="checkbox"],
@@ -128,17 +140,18 @@
     }
 
     .privacy-box {
-      background-color: #F3F4F6;
-      padding: 1.25rem;
-      border-radius: 8px;
+      background-color: #F1F5F9;
+      padding: 1.5rem;
+      border-radius: 12px;
       margin-top: 2rem;
-      margin-bottom: 1.5rem;
-      border-left: 4px solid var(--accent-color);
+      margin-bottom: 2rem;
+      border: 1px solid #E2E8F0;
     }
 
     .privacy-box h3 {
       font-size: 1.05rem;
-      margin-bottom: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
     }
 
     .hidden {
@@ -150,16 +163,57 @@
       background-color: var(--accent-color);
       color: white;
       border: none;
-      padding: 0.85rem;
-      border-radius: 8px;
+      padding: 0.95rem;
+      border-radius: 10px;
       font-size: 1rem;
       font-weight: 600;
       cursor: pointer;
-      transition: background-color 0.2s ease;
+      transition: background-color 0.2s ease, transform 0.1s ease;
     }
 
     button[type="submit"]:hover {
       background-color: var(--accent-hover);
+    }
+
+    button[type="submit"]:active {
+      transform: scale(0.99);
+    }
+
+    /* Componente de Notificação (Toast Customizado) */
+    .toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background-color: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-left: 5px solid var(--success-color);
+      padding: 1rem 1.25rem;
+      border-radius: 12px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--text-main);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .toast-icon {
+      width: 24px;
+      height: 24px;
+      fill: var(--success-color);
+      flex-shrink: 0;
     }
   </style>
 </head>
@@ -174,33 +228,36 @@
     <main class="form-card">
       <form id="racismReportForm">
 
-        <!-- 1. Tipo de Racismo -->
+        <!-- 1. Tipos de Racismo -->
         <div class="form-group">
-          <label>1. Que tipo de racismo/discriminação ocorreu?</label>
-          <span class="help-text">Selecione todas as opções que se aplicam.</span>
+          <label>1. Qual tipo de racismo descreve a situação?</label>
+          <span class="help-text">Selecione uma ou mais opções.</span>
           <div class="options-grid">
             <label class="option-item">
-              <input type="checkbox" name="tipo" value="injuria_racial"> Injúria Racial (ofensas diretas à honra)
+              <input type="checkbox" name="tipo" value="cultural"> Racismo Cultural (desvalorização de tradições ou costumes)
             </label>
             <label class="option-item">
-              <input type="checkbox" name="tipo" value="racismo_institucional"> Racismo Institucional (barreiras em empresas/órgãos)
+              <input type="checkbox" name="tipo" value="estrutural"> Racismo Estrutural (desigualdades históricas e sociais)
             </label>
             <label class="option-item">
-              <input type="checkbox" name="tipo" value="microagressao"> Microagressão / Piadas desagradáveis
+              <input type="checkbox" name="tipo" value="institucional"> Racismo Institucional (discriminação em empresas ou órgãos público)
             </label>
             <label class="option-item">
-              <input type="checkbox" name="tipo" value="perfilamento"> Perfilamento Racial / Suspeição injusta
+              <input type="checkbox" name="tipo" value="individual"> Racismo Individual / Interpessoal (ofensas diretas presencial ou online)
             </label>
             <label class="option-item">
-              <input type="checkbox" name="tipo" value="outro"> Outro
+              <input type="checkbox" name="tipo" value="recreativo"> Racismo Recreativo (piadas ou comentários disfarçados de humor)
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="tipo" value="religioso"> Racismo / Intolerância Religiosa (ataques a religiões de matriz africana)
             </label>
           </div>
         </div>
 
-        <!-- 2. Local -->
+        <!-- 2. Local (Select Padrão) -->
         <div class="form-group">
           <label for="local">2. Onde ocorreu a situação?</label>
-          <select id="local" name="local" required>
+          <select id="local" name="local" onchange="handleLocalChange()" required>
             <option value="" disabled selected>Selecione um local...</option>
             <option value="escola_universidade">Escola ou Universidade</option>
             <option value="trabalho">Ambiente de Trabalho</option>
@@ -209,8 +266,14 @@
             <option value="redes_sociais">Redes Sociais / Internet</option>
             <option value="transporte">Transporte Público</option>
             <option value="familiar">Ambiente Familiar ou Doméstico</option>
-            <option value="outro">Outro</option>
+            <option value="outro">Outros</option>
           </select>
+        </div>
+
+        <!-- Campo Adicional Dinâmico -->
+        <div class="form-group hidden" id="outrosLocalGroup">
+          <label for="outroLocalDetalhado">Especifique o local (Opcional):</label>
+          <input type="text" id="outroLocalDetalhado" name="outroLocalDetalhado" placeholder="Ex: Academia, hospital, aplicativo de transporte...">
         </div>
 
         <!-- 3. Autor -->
@@ -221,7 +284,7 @@
             <option value="desconhecido">Pessoa Desconhecida</option>
             <option value="colega">Colega de Trabalho ou Estudo</option>
             <option value="superior">Gestor / Superior / Professor</option>
-            <option value="agente_seguranca">Segurança Private / Agente Público</option>
+            <option value="agente_seguranca">Segurança Privada / Agente Público</option>
             <option value="prestador_servico">Prestador de Serviço</option>
             <option value="familiar_conhecido">Familiar ou Conhecido</option>
           </select>
@@ -290,17 +353,11 @@
 
           <div class="form-group hidden" id="nameFieldGroup">
             <label for="nomeExibicao">Nome ou Pseudônimo de exibição:</label>
-            <input type="text" id="nomeExibicao" name="nomeExibicao" placeholder="Ex: Maria S. ou A.C.">
-          </div>
-
-          <div class="form-group">
-            <label for="emailContato">E-mail de contato (Opcional - Não será publicado):</label>
-            <span class="help-text">Usado apenas caso a moderação precise validar informações.</span>
-            <input type="email" id="emailContato" name="emailContato" placeholder="seuemail@exemplo.com">
+            <input type="text" id="nomeExibicao" name="nomeExibicao" placeholder="Ex: Joãozinho">
           </div>
 
           <div class="form-group" style="margin-bottom: 0;">
-            <label class="option-item">
+            <label class="option-item" style="border: none; padding: 0;">
               <input type="checkbox" id="consentimento" required> Autorizo a publicação deste relato para fins de conscientização.
             </label>
           </div>
@@ -311,7 +368,27 @@
     </main>
   </div>
 
+  <!-- Toast Notification Customizado -->
+  <div id="toastNotification" class="toast">
+    <svg class="toast-icon" viewBox="0 0 24 24">
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+    </svg>
+    <span>Relato enviado com sucesso! Obrigado por compartilhar.</span>
+  </div>
+
   <script>
+    function handleLocalChange() {
+      const selectVal = document.getElementById('local').value;
+      const outrosGroup = document.getElementById('outrosLocalGroup');
+      
+      if (selectVal === 'outro') {
+        outrosGroup.classList.remove('hidden');
+      } else {
+        outrosGroup.classList.add('hidden');
+        document.getElementById('outroLocalDetalhado').value = '';
+      }
+    }
+
     function toggleNameField(show) {
       const nameGroup = document.getElementById('nameFieldGroup');
       if (show) {
@@ -322,11 +399,20 @@
       }
     }
 
+    function showToast() {
+      const toast = document.getElementById('toastNotification');
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 4000);
+    }
+
     document.getElementById('racismReportForm').addEventListener('submit', function(e) {
       e.preventDefault();
-      alert('Relato enviado com sucesso! Obrigado por compartilhar sua história.');
+      showToast();
       this.reset();
       toggleNameField(false);
+      handleLocalChange();
     });
   </script>
 </body>
