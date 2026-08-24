@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Canal de Relatos e Conscientização</title>
+  <style>
+    :root {
+      --bg-color: #FAFAFA;
+      --card-bg: #FFFFFF;
+      --text-main: #1F2937;
+      --text-muted: #4B5563;
+      --accent-color: #4F46E5;
+      --accent-hover: #4338CA;
+      --border-color: #E5E7EB;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 2rem 1rem;
+    }
+
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .form-card {
+      background-color: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      border: 1px solid var(--border-color);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      font-size: 0.95rem;
+    }
+
+    .help-text {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background-color: #FFFFFF;
+      color: var(--text-main);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .options-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .option-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: normal;
+      font-size: 0.95rem;
+      cursor: pointer;
+    }
+
+    .option-item input[type="checkbox"],
+    .option-item input[type="radio"] {
+      accent-color: var(--accent-color);
+      width: 18px;
+      height: 18px;
+      cursor: pointer;
+    }
+
+    .privacy-box {
+      background-color: #F3F4F6;
+      padding: 1.25rem;
+      border-radius: 8px;
+      margin-top: 2rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--accent-color);
+    }
+
+    .privacy-box h3 {
+      font-size: 1.05rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      background-color: var(--accent-color);
+      color: white;
+      border: none;
+      padding: 0.85rem;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+
+    button[type="submit"]:hover {
+      background-color: var(--accent-hover);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Espaço de Escuta e Relatos</h1>
+      <p>Um ambiente seguro para compartilhamento de experiências e conscientização.</p>
+    </header>
+
+    <main class="form-card">
+      <form id="racismReportForm">
+
+        <!-- 1. Tipo de Racismo -->
+        <div class="form-group">
+          <label>1. Que tipo de racismo/discriminação ocorreu?</label>
+          <span class="help-text">Selecione todas as opções que se aplicam.</span>
+          <div class="options-grid">
+            <label class="option-item">
+              <input type="checkbox" name="tipo" value="injuria_racial"> Injúria Racial (ofensas diretas à honra)
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="tipo" value="racismo_institucional"> Racismo Institucional (barreiras em empresas/órgãos)
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="tipo" value="microagressao"> Microagressão / Piadas desagradáveis
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="tipo" value="perfilamento"> Perfilamento Racial / Suspeição injusta
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="tipo" value="outro"> Outro
+            </label>
+          </div>
+        </div>
+
+        <!-- 2. Local -->
+        <div class="form-group">
+          <label for="local">2. Onde ocorreu a situação?</label>
+          <select id="local" name="local" required>
+            <option value="" disabled selected>Selecione um local...</option>
+            <option value="escola_universidade">Escola ou Universidade</option>
+            <option value="trabalho">Ambiente de Trabalho</option>
+            <option value="espaco_publico">Espaço Público (Rua, praça, parque)</option>
+            <option value="estabelecimento">Estabelecimento Comercial (Loja, restaurante, shopping)</option>
+            <option value="redes_sociais">Redes Sociais / Internet</option>
+            <option value="transporte">Transporte Público</option>
+            <option value="familiar">Ambiente Familiar ou Doméstico</option>
+            <option value="outro">Outro</option>
+          </select>
+        </div>
+
+        <!-- 3. Autor -->
+        <div class="form-group">
+          <label for="autor">3. Quem praticou a agressão ou discriminação?</label>
+          <select id="autor" name="autor" required>
+            <option value="" disabled selected>Selecione a relação...</option>
+            <option value="desconhecido">Pessoa Desconhecida</option>
+            <option value="colega">Colega de Trabalho ou Estudo</option>
+            <option value="superior">Gestor / Superior / Professor</option>
+            <option value="agente_seguranca">Segurança Private / Agente Público</option>
+            <option value="prestador_servico">Prestador de Serviço</option>
+            <option value="familiar_conhecido">Familiar ou Conhecido</option>
+          </select>
+        </div>
+
+        <!-- 4. Impacto -->
+        <div class="form-group">
+          <label>4. Qual foi o impacto do ocorrido?</label>
+          <div class="options-grid">
+            <label class="option-item">
+              <input type="checkbox" name="impacto" value="emocional"> Abalo emocional ou psicológico
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="impacto" value="afastamento"> Afastamento das atividades (estudo/trabalho)
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="impacto" value="mudanca_rotina"> Alteração de rotina para evitar o local
+            </label>
+            <label class="option-item">
+              <input type="checkbox" name="impacto" value="suporte"> Necessidade de acompanhamento profissional
+            </label>
+          </div>
+        </div>
+
+        <!-- 5. Denúncia -->
+        <div class="form-group">
+          <label>5. Houve denúncia formal ou busca por suporte legal?</label>
+          <div class="options-grid">
+            <label class="option-item">
+              <input type="radio" name="denuncia" value="boletim" required> Sim, fiz Registro Policial (B.O.)
+            </label>
+            <label class="option-item">
+              <input type="radio" name="denuncia" value="ouvidoria"> Sim, denunciei ao RH / Ouvidoria
+            </label>
+            <label class="option-item">
+              <input type="radio" name="denuncia" value="juridico"> Sim, busquei apoio de advogado ou ONG
+            </label>
+            <label class="option-item">
+              <input type="radio" name="denuncia" value="nao"> Não fiz denúncia formal
+            </label>
+          </div>
+        </div>
+
+        <!-- 6. Relato Livre -->
+        <div class="form-group">
+          <label for="relato">6. Seu Relato</label>
+          <span class="help-text">Descreva o ocorrido com suas próprias palavras. Evite citar nomes completos de terceiros por questões jurídicas.</span>
+          <textarea id="relato" name="relato" placeholder="Escreva aqui seu depoimento..." required></textarea>
+        </div>
+
+        <!-- Bloco de Anonimato e Privacidade -->
+        <div class="privacy-box">
+          <h3>Privacidade e Identificação</h3>
+          
+          <div class="form-group">
+            <label>Como deseja que seu relato seja publicado no site?</label>
+            <div class="options-grid">
+              <label class="option-item">
+                <input type="radio" name="anonimato" value="anonimo" checked onclick="toggleNameField(false)"> Publicar como Anônimo
+              </label>
+              <label class="option-item">
+                <input type="radio" name="anonimato" value="identificado" onclick="toggleNameField(true)"> Publicar com meu nome ou pseudônimo
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group hidden" id="nameFieldGroup">
+            <label for="nomeExibicao">Nome ou Pseudônimo de exibição:</label>
+            <input type="text" id="nomeExibicao" name="nomeExibicao" placeholder="Ex: Maria S. ou A.C.">
+          </div>
+
+          <div class="form-group">
+            <label for="emailContato">E-mail de contato (Opcional - Não será publicado):</label>
+            <span class="help-text">Usado apenas caso a moderação precise validar informações.</span>
+            <input type="email" id="emailContato" name="emailContato" placeholder="seuemail@exemplo.com">
+          </div>
+
+          <div class="form-group" style="margin-bottom: 0;">
+            <label class="option-item">
+              <input type="checkbox" id="consentimento" required> Autorizo a publicação deste relato para fins de conscientização.
+            </label>
+          </div>
+        </div>
+
+        <button type="submit">Enviar Relato</button>
+      </form>
+    </main>
+  </div>
+
+  <script>
+    function toggleNameField(show) {
+      const nameGroup = document.getElementById('nameFieldGroup');
+      if (show) {
+        nameGroup.classList.remove('hidden');
+      } else {
+        nameGroup.classList.add('hidden');
+        document.getElementById('nomeExibicao').value = '';
+      }
+    }
+
+    document.getElementById('racismReportForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      alert('Relato enviado com sucesso! Obrigado por compartilhar sua história.');
+      this.reset();
+      toggleNameField(false);
+    });
+  </script>
+</body>
+</html>
